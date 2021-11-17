@@ -1,5 +1,3 @@
--- noinspection SqlNoDataSourceInspectionForFile
-
 CREATE TABLE IF NOT EXISTS host_info
 (
     id                  SERIAL PRIMARY KEY,
