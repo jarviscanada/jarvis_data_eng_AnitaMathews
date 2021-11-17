@@ -23,15 +23,16 @@ case $cmd in
   fi
 
   #3 CLI arguments are required
-  if [$# -ne 3 ]; then
+  if [ $# -ne 3 ]; then
     echo 'Create requires username and password'
     exit 1
   fi
 
   #create PSQL container using PSQL image
   #create volume (to preserve data for the container)
+  echo "Creating container"
   docker volume create pgdata
-  docker run --name jrvs-psql -e POSTGRES_USER="$db_username" -e POSTGRES_PASSWORD="$db_password" -d -v pgdata:/var/lib/postgresql/data -p 5432:5432 postgres:9.6-alpine
+  docker run --name jrvs-psql -e POSTGRES_USER="$db_username" -e POSTGRES_PASSWORD="$db_password" -d -v PGDATA=/var/lib/postgresql/data -p 5432:5432 postgres:9.6-alpine
   exit $?
   ;;
 
@@ -43,7 +44,7 @@ case $cmd in
   fi
 
   #start/stop the container
-  docker container $cmd jrvs-psql
+  docker container "$cmd" jrvs-psql
   exit $?
   ;;
 
