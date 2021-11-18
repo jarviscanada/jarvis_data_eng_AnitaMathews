@@ -29,5 +29,5 @@ insert_stmt="INSERT INTO host_info VALUES (DEFAULT, '$hostname', $cpu_number, '$
 
 export PGPASSWORD=$psql_password
 
-psql -h "$psql_host" -p "$psql_port" -d "$db_name" -U "$psql_user" -c "$insert_stmt"
+psql -h "$psql_host" -p "$psql_port" -d "$db_name" -U "$psql_user" -c "select * from host_info"
 exit $?
