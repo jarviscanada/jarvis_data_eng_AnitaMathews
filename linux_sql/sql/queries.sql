@@ -1,13 +1,15 @@
--- groups hosts by hardware info
--- group by cpu number and sort by memory size in descending order
+-- Query 1: Grouping hosts based on hardware info
+-- sort by memory size in descending order for each cpu_number
 
 SELECT cpu_number, id AS host_id, total_mem
 FROM host_info
 ORDER BY 1, 3 DESC;
 
 
--- average memory usage in percentage over 5 min intervals for each host
--- used memory = total memory - free memory
+-- Query 2: Calculating the average memory usage in percentage over 5 min intervals for each host
+-- (used memory = total memory - free memory)
+
+-- function to round each timestamp to the nearest 5 min 
 create function round5(ts timestamp) RETURNS timestamp
 AS
 $$
@@ -24,6 +26,8 @@ FROM host_usage
 GROUP BY host_id, timestamp5) t1
 INNER JOIN host_info t2
 ON t1.host_id = t2.id;
+
+-- Query 3: Determining if a server failed by selecting host_ids that have less than 3 entries in a 5 min interval
 
 SELECT host_id, round5(timestamp) as timestamp5, COUNT(*) AS num_data
 FROM host_usage
