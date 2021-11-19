@@ -54,13 +54,13 @@ An architecture diagram using 3 Linux hosts as an example is shown below.
 ## Scripts
 Below are the descriptions for the scripts along with their usage.
 - **`psql_docker.sh`:**
-- provisions a PSQL instance using Docker
-- PSQL instance must be created, then started
+  - provisions a PSQL instance using Docker
+  - PSQL instance must be created, then started
 ```
   ./scripts/psql_docker.sh create|start|stop DB_USERNAME DB_PASSWORD
 ```
 - **`ddl.sql`:**
-- creates `host_usage` and `host_info` tables in the `host_agent` database
+  - creates `host_usage` and `host_info` tables in the `host_agent` database
 ```
   psql -h HOST_NAME -p PSQL_PORT -U DB_USERNAME -d host_agent -f sql/ddl.sql
 ```
@@ -77,7 +77,7 @@ Below are the descriptions for the scripts along with their usage.
   ./scripts/host_usage.sh HOST_NAME PSQL_PORT host_agent DB_USERNAME DB_PASSWORD
 ```
 - **`crontab`:**
-    - edit the crontab file with the path to the host_usage.sh script that will be executed every minute
+  - edit the crontab file with the path to the host_usage.sh script that will be executed every minute
 ```
   * * * * * bash [path to host_usage.sh] HOST_NAME PSQL_PORT host_agent DB_USERNAME DB_PASSWORD > /tmp/host_usage.log
 ```
