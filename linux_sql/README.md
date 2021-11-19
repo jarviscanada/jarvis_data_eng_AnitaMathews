@@ -79,6 +79,9 @@ Below are the descriptions for the scripts along with their usage.
 - **`crontab`:**
   - edit the crontab file with the path to the host_usage.sh script that will be executed every minute
 ```
+  crontab -e
+  
+  # add to the file
   * * * * * bash [path to host_usage.sh] HOST_NAME PSQL_PORT host_agent DB_USERNAME DB_PASSWORD > /tmp/host_usage.log
 ```
 - **`queries.sql`:** 
