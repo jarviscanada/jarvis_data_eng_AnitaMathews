@@ -13,7 +13,6 @@ fi
 
 hostname=$(hostname -f)
 
-#id,hostname,cpu_number,cpu_architecture,cpu_model,cpu_mhz,L2_cache,timestamp
 lscpu_out=$(lscpu)
 meminfovals=$(cat /proc/meminfo)
 hostname=$(echo "$hostname" | xargs)
