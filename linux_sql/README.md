@@ -86,6 +86,7 @@ Below are the descriptions for the scripts along with their usage.
   - Query 1: Inspecting total memory across hosts with the same number of cpus. This allows the LCA team to determine the right hosts for certain jobs.
   - Query 2: Calculating the average memory usage in percent over 5 minute intervals. This allows the LCA team to determine the extent to which the hosts are being utilized over time.
   - Query 3: Detecting failure of the cron job to regularly insert data into the host_usage table. If the table is not updated by the same host at least 3 times in 5 minutes, it can be assumed that the server failed and the team must further inspect this.
+  - Queries were executed on the database using DBeaver
 
 ## Database Modeling
 
