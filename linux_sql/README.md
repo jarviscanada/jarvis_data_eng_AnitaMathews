@@ -48,7 +48,7 @@ two tables called `host_info` and `host_usage`. This database is provisioned usi
 the data from this container. 
 
 ## Architecture 
-Draw a cluster diagram with three Linux hosts, a DB, and agents (use draw.io website). Image must be saved to the `assets` directory.
+An architecture diagram using 3 Linux hosts as an example is shown below.
 ![architecture diagram](./assets/LinuxSQL2.drawio.png)
 
 ## Scripts
