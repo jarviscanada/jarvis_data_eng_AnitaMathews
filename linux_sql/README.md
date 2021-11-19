@@ -53,35 +53,35 @@ An architecture diagram using 3 Linux hosts as an example is shown below.
 
 ## Scripts
 Below are the descriptions for the scripts along with their usage.
-- `psql_docker.sh`:
+- **`psql_docker.sh`:**
 - provisions a PSQL instance using Docker
 - PSQL instance must be created, then started
 ```
   ./scripts/psql_docker.sh create|start|stop DB_USERNAME DB_PASSWORD
 ```
-- `ddl.sql`:
+- **`ddl.sql`:**
 - creates `host_usage` and `host_info` tables in the `host_agent` database
 ```
   psql -h HOST_NAME -p PSQL_PORT -U DB_USERNAME -d host_agent -f sql/ddl.sql
 ```
-- `host_info.sh`:
+- **`host_info.sh`:**
   - collects and inserts hardware data into the host_info table in the host_agent postgreSQL database
   - information is collected and inserted <b>once</b>
 ```
   ./scripts/host_info.sh HOST_NAME PSQL_PORT host_agent DB_USERNAME DB_PASSWORD
 ```
-- `host_usage.sh`:
+- **`host_usage.sh`:**
   - collects and inserts resource usage data into the host_usage table in the host_agent postgreSQL database
   - information is collected and inserted every <b>minute</b>
 ```
   ./scripts/host_usage.sh HOST_NAME PSQL_PORT host_agent DB_USERNAME DB_PASSWORD
 ```
-- `crontab`:
+- **`crontab`:**
     - edit the crontab file with the path to the host_usage.sh script that will be executed every minute
 ```
   * * * * * bash [path to host_usage.sh] HOST_NAME PSQL_PORT host_agent DB_USERNAME DB_PASSWORD > /tmp/host_usage.log
 ```
-- `queries.sql`: 
+- **`queries.sql`:** 
   - 3 queries showing how the host_usage data can be interpreted
   - Query 1: Inspecting total memory across hosts with the same number of cpus. This allows the LCA team to determine the right hosts for certain jobs.
   - Query 2: Calculating the average memory usage in percent over 5 minute intervals. This allows the LCA team to determine the extent to which the hosts are being utilized over time.
