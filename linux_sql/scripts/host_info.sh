@@ -11,10 +11,11 @@ if [ $# -ne 5 ]; then
   exit 1
 fi
 
+#obtain hostname, cpu_number, cpu_architecture, cpu_model, cpu_mhz, l2_cache, total_mem and timestamp
 hostname=$(hostname -f)
-
 lscpu_out=$(lscpu)
 meminfovals=$(cat /proc/meminfo)
+
 hostname=$(echo "$hostname" | xargs)
 cpu_number=$(echo "$lscpu_out"  | grep -E "^CPU\(s\):" | awk '{print $2}' | xargs)
 cpu_architecture=$(echo "$lscpu_out"  | grep -E "^Architecture:" | awk '{print $2}' | xargs)
@@ -26,7 +27,7 @@ timestamp=$(vmstat -t | tail -n1 | awk '{print $18, $19}' | xargs)
 
 insert_stmt="INSERT INTO host_info VALUES (DEFAULT, '$hostname', $cpu_number, '$cpu_architecture', '$cpu_model', $cpu_mhz, $l2_cache, $total_mem, '$timestamp')"
 
+#insert data into host_info table in database
 export PGPASSWORD=$psql_password
-
 psql -h "$psql_host" -p "$psql_port" -d "$db_name" -U "$psql_user" -c "$insert_stmt"
 exit $?
