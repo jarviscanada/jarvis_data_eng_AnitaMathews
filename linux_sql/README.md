@@ -2,8 +2,8 @@
 # Introduction
 The purpose of this project is to design and implement a Linux Cluster Monitoring Agent which will aid the Jarvis Linux Cluster Administration (LCA) team.
 The LCA team manages a Linux cluster with 10 servers, each running CentOS 7, and is interested in recording the hardware specifications and real-time resource usage for each server.
-In this project, an MVP is developed using bash scripts, docker, postgres SQL and git.
-The overall design involves a set of bash scripts which are to be used on each server to record data and send it to a postgresSQL database which 
+In this project, an MVP is developed using bash scripts, docker, postgreSQL and git.
+The overall design involves a set of bash scripts which are to be used on each server to record data and send it to a postgreSQL database which 
 will be on one of the servers. The database is provisioned using Docker (which allows it to be easily deployed) and resource usage data will be sent to the database every minute.
 In this way, the LCA team can then use the data to better utilize and manage their resources.
 
