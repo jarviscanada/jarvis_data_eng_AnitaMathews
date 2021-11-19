@@ -138,7 +138,7 @@ f3e9c248e90d   postgres:9.6-alpine   "docker-entrypoint.s…"   2 days ago   Up 
 ```
 
 The `host_info.sh` and `host_usage.sh` scripts were tested by comparing inserted data to that obtained from `/proc/meminfo` and
-the `lscpu` and `vmstat` commands. 
+the `lscpu` and `vmstat` commands. **Note: The memory values are stored in MB in the database.**
 
 ```
 $ lscpu
