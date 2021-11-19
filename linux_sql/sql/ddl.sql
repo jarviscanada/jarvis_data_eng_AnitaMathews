@@ -19,9 +19,9 @@ CREATE TABLE IF NOT EXISTS host_usage
     "timestamp"     TIMESTAMP NOT NULL,
     host_id         SERIAL NOT NULL REFERENCES host_info (id),
     memory_free     INTEGER NOT NULL,
-    cpu_idle        SMALLINT NOT NULL,
-    cpu_kernel      SMALLINT NOT NULL,
-    disk_io         SMALLINT NOT NULL,
+    cpu_idle        INTEGER NOT NULL,
+    cpu_kernel      INTEGER NOT NULL,
+    disk_io         INTEGER NOT NULL,
     disk_available  INTEGER NOT NULL
 
 )
