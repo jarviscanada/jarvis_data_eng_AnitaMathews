@@ -106,7 +106,6 @@ The schemas for the `host_info` and `host_usage` tables can be seen below.
 | timestamp | integer (foreign key to id on host_info) | integer     | integer      | integer | integer | integer       |
 
 # Testing
-How did you test your bash scripts and SQL queries? What was the result?
 
 ## Bash Scripts
 
