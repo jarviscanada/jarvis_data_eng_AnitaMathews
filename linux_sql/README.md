@@ -132,6 +132,7 @@ Illegal command
 Commands: start|stop|create
 
 $ ./scripts/psql_docker.sh start postgres password
+$ docker ps -a
 CONTAINER ID   IMAGE                 COMMAND                  CREATED      STATUS           PORTS                                          NAMES
 f3e9c248e90d   postgres:9.6-alpine   "docker-entrypoint.s…"   2 days ago   Up 10 seconds    0.0.0.0:5432->5432/tcp, :::5432->5432/tcp      jrvs-psql
 
