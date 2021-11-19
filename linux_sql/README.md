@@ -201,15 +201,17 @@ SELECT * FROM host_usage
 
 The records created match the expected data with slight variations due to the timing.
 
+## SQL Queries
+
 The SQL queries were tested by inserting sample values into the host_info and host_usage tables and examining the results.
 
-Testing for Query 1: 
+**Testing for Query 1:**
 ```
 insert into host_info values (1, 'host1', 1, 'x86_64', 'Intel(R) Xeon(R) CPU @ 2.30GHz', 2299.998, 256, 2048, TIMESTAMP '2021-06-22 19:10:25-07'),
-						     (5, 'host2', 1, 'x86_64', 'Intel(R) Xeon(R) CPU @ 2.30GHz', 2299.998, 256, 1568, TIMESTAMP '2021-06-24 19:10:25-07'),
-							 (9, 'host3', 1, 'x86_64', 'Intel(R) Xeon(R) CPU @ 2.30GHz', 2299.998, 256, 1024, TIMESTAMP '2021-06-23 19:10:25-07'),
-							 (4, 'host4', 2, 'x86_64', 'Intel(R) Xeon(R) CPU @ 2.30GHz', 2299.998, 256, 4088, TIMESTAMP '2021-06-26 19:10:25-07'),
-							 (6, 'host5', 2, 'x86_64', 'Intel(R) Xeon(R) CPU @ 2.30GHz', 2299.998, 256, 1024, TIMESTAMP '2021-06-27 19:10:25-07');
+			     (5, 'host2', 1, 'x86_64', 'Intel(R) Xeon(R) CPU @ 2.30GHz', 2299.998, 256, 1568, TIMESTAMP '2021-06-24 19:10:25-07'),
+			     (9, 'host3', 1, 'x86_64', 'Intel(R) Xeon(R) CPU @ 2.30GHz', 2299.998, 256, 1024, TIMESTAMP '2021-06-23 19:10:25-07'),
+		   	     (4, 'host4', 2, 'x86_64', 'Intel(R) Xeon(R) CPU @ 2.30GHz', 2299.998, 256, 4088, TIMESTAMP '2021-06-26 19:10:25-07'),
+			     (6, 'host5', 2, 'x86_64', 'Intel(R) Xeon(R) CPU @ 2.30GHz', 2299.998, 256, 1024, TIMESTAMP '2021-06-27 19:10:25-07');
 
 SELECT cpu_number, id AS host_id, total_mem
 FROM host_info
@@ -227,31 +229,31 @@ The select statement returns:
 
 This is the expected result as the cpu_number is in ascending order and within each cpu_number group, the total memory is listed in descending order.
 
-Testing for Query 2:
+**Testing for Query 2:**
 
 ```
 insert into host_usage values   (TIMESTAMP '2021-06-22 19:00:25-07', 1, 400, 93, 3, 0, 24000),
-							    (TIMESTAMP '2021-06-22 19:01:25-07', 1, 500, 93, 3, 0, 24000),
-							    (TIMESTAMP '2021-06-22 19:02:25-07', 1, 600, 94, 4, 0, 24000),
-								(TIMESTAMP '2021-06-22 19:03:25-07', 1, 450, 93, 5, 0, 24000),
-								(TIMESTAMP '2021-06-22 19:04:25-07', 1, 300, 92, 4, 0, 24000),
-								(TIMESTAMP '2021-06-22 19:05:25-07', 5, 250, 80, 5, 0, 23000),
-								(TIMESTAMP '2021-06-22 19:06:25-07', 5, 400, 85, 5, 0, 23000),
-								(TIMESTAMP '2021-06-22 19:07:25-07', 5, 450, 87, 5, 0, 23000),
-								(TIMESTAMP '2021-06-22 19:08:25-07', 5, 550, 90, 5, 0, 23000),
-								(TIMESTAMP '2021-06-22 19:09:25-07', 5, 600, 88, 5, 0, 23000),
-								(TIMESTAMP '2021-06-22 19:10:25-07', 5, 250, 87, 5, 0, 23000),
-								(TIMESTAMP '2021-06-22 19:11:25-07', 5, 400, 87, 5, 0, 23000),
-								(TIMESTAMP '2021-06-22 19:12:25-07', 5, 450, 86, 6, 0, 23000),
-								(TIMESTAMP '2021-06-22 19:13:25-07', 5, 550, 88, 6, 0, 23000),
-								(TIMESTAMP '2021-06-22 19:14:25-07', 5, 600, 85, 6, 0, 23000),
-								(TIMESTAMP '2021-06-22 19:10:25-07', 9, 300, 96, 3, 0, 23500),
-								(TIMESTAMP '2021-06-22 19:11:25-07', 9, 500, 97, 3, 0, 23500),
-								(TIMESTAMP '2021-06-22 19:12:25-07', 9, 450, 97, 3, 0, 23500),
-								(TIMESTAMP '2021-06-22 19:13:25-07', 9, 650, 97, 3, 0, 23500),
-								(TIMESTAMP '2021-06-22 19:14:25-07', 9, 700, 98, 2, 0, 23500),
-								(TIMESTAMP '2021-06-22 19:13:25-07', 6, 650, 91, 2, 0, 24500),
-								(TIMESTAMP '2021-06-22 19:14:25-07', 6, 700, 90, 2, 0, 24500);
+				(TIMESTAMP '2021-06-22 19:01:25-07', 1, 500, 93, 3, 0, 24000),
+				(TIMESTAMP '2021-06-22 19:02:25-07', 1, 600, 94, 4, 0, 24000),
+				(TIMESTAMP '2021-06-22 19:03:25-07', 1, 450, 93, 5, 0, 24000),
+				(TIMESTAMP '2021-06-22 19:04:25-07', 1, 300, 92, 4, 0, 24000),
+				(TIMESTAMP '2021-06-22 19:05:25-07', 5, 250, 80, 5, 0, 23000),
+				(TIMESTAMP '2021-06-22 19:06:25-07', 5, 400, 85, 5, 0, 23000),
+				(TIMESTAMP '2021-06-22 19:07:25-07', 5, 450, 87, 5, 0, 23000),
+				(TIMESTAMP '2021-06-22 19:08:25-07', 5, 550, 90, 5, 0, 23000),
+				(TIMESTAMP '2021-06-22 19:09:25-07', 5, 600, 88, 5, 0, 23000),
+				(TIMESTAMP '2021-06-22 19:10:25-07', 5, 250, 87, 5, 0, 23000),
+				(TIMESTAMP '2021-06-22 19:11:25-07', 5, 400, 87, 5, 0, 23000),
+				(TIMESTAMP '2021-06-22 19:12:25-07', 5, 450, 86, 6, 0, 23000),
+				(TIMESTAMP '2021-06-22 19:13:25-07', 5, 550, 88, 6, 0, 23000),
+				(TIMESTAMP '2021-06-22 19:14:25-07', 5, 600, 85, 6, 0, 23000),
+				(TIMESTAMP '2021-06-22 19:10:25-07', 9, 300, 96, 3, 0, 23500),
+				(TIMESTAMP '2021-06-22 19:11:25-07', 9, 500, 97, 3, 0, 23500),
+				(TIMESTAMP '2021-06-22 19:12:25-07', 9, 450, 97, 3, 0, 23500),
+				(TIMESTAMP '2021-06-22 19:13:25-07', 9, 650, 97, 3, 0, 23500),
+				(TIMESTAMP '2021-06-22 19:14:25-07', 9, 700, 98, 2, 0, 23500),
+				(TIMESTAMP '2021-06-22 19:13:25-07', 6, 650, 91, 2, 0, 24500),
+				(TIMESTAMP '2021-06-22 19:14:25-07', 6, 700, 90, 2, 0, 24500);
 
 SELECT t1.host_id, t2.hostname, timestamp5, round((t2.total_mem - t1.avg_free_mem)/t2.total_mem * 100, 2) as avg_used_mem_percentage
 FROM
@@ -273,7 +275,7 @@ The select statement returns the following with the correct average memory usage
 | 6       | host5     | 2021-06-22 19:10:00.000 | 34.08      |
 | 9       | host3     | 2021-06-22 19:10:00.000 | 49.22      |
 
-Testing for Query 3:
+**Testing for Query 3:**
 ```
 SELECT host_id, round5(timestamp) as timestamp5, COUNT(*) AS num_data_points
 FROM host_usage
