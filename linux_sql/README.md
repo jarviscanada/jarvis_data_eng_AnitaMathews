@@ -264,8 +264,8 @@ FROM
 (SELECT host_id, round5(timestamp) as timestamp5, AVG(memory_free) as avg_free_mem
 FROM host_usage
 GROUP BY host_id, timestamp5
-order by host_id, timestamp5) t1
-LEFT JOIN host_info t2
+ORDER BY host_id, timestamp5) t1
+INNER JOIN host_info t2
 ON t1.host_id = t2.id;
 
 ```
