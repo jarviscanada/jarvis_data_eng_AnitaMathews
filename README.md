@@ -15,13 +15,13 @@ My name is Anita Mathews and I graduated in November 2020 with my M.Sc. in Physi
 Project source code: [https://github.com/jarviscanada/jarvis_data_eng_AnitaMathews](https://github.com/jarviscanada/jarvis_data_eng_AnitaMathews)
 
 
-**Linux Cluster Monitoring Agent** [[GitHub](https://github.com/jarviscanada/jarvis_data_eng_AnitaMathews/tree/master/linux_sql)]: Provisioned a postgreSQL database using Docker on a Linux VM hosted on GCP. Wrote bash scripts to extract hardware specifications and resource usage data and insert data into database. Used crontab to record resource data every minute and confirmed results by performing SQL queries on the database. Used git during the development process and saved source code to GitHub.
+**Linux Cluster Monitoring Agent** [[GitHub](https://github.com/jarviscanada/jarvis_data_eng_AnitaMathews/tree/master/linux_sql)]: Provisioned a postgreSQL database using Docker on a Linux VM hosted on GCP. Programmed bash scripts to extract hardware specifications and resource usage data and insert data into database. Used crontab to record resource data every minute and tested results by performing SQL queries on the database. Used git during the development process and saved source code to GitHub.
 
 **Core Java Apps** [[GitHub](https://github.com/jarviscanada/jarvis_data_eng_AnitaMathews/tree/master/core_java)]:
       
-  - Twitter App: Curabitur laoreet tristique leo, eget suscipit nisi. Sed in sodales ex. Maecenas vitae tincidunt dui, et eleifend quam.
-  - JDBC App: Curabitur laoreet tristique leo, eget suscipit nisi. Sed in sodales ex. Maecenas vitae tincidunt dui, et eleifend quam.
-  - Grep App: Curabitur laoreet tristique leo, eget suscipit nisi. Sed in sodales ex. Maecenas vitae tincidunt dui, et eleifend quam.
+  - Twitter App: In process.
+  - JDBC App: In process.
+  - Grep App: In process.
 
 **Springboot App** [[GitHub](https://github.com/jarviscanada/jarvis_data_eng_AnitaMathews/tree/master/springboot)]: Not Started
 
