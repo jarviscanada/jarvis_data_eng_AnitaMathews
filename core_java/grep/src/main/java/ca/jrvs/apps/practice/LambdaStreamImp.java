@@ -43,7 +43,7 @@ public class LambdaStreamImp implements LambdaStreamExc {
     }
 
     public IntStream createIntStream(int start, int end) {
-        IntStream stream = IntStream.range(start, end);
+        IntStream stream = IntStream.rangeClosed(start, end);
         return stream;
     }
 
@@ -67,7 +67,7 @@ public class LambdaStreamImp implements LambdaStreamExc {
     }
 
     public void printOdd(IntStream intStream, Consumer<String> printer) {
-        intStream.mapToObj(element -> Integer.toString(element)).forEach(printer);
+        getOdd(intStream).mapToObj(element -> Integer.toString(element)).forEach(printer);
     }
 
     public Stream<Integer> flatNestedInt(Stream<List<Integer>> ints) {
