@@ -6,12 +6,12 @@ The purpose of this application is to mimic the Linux `grep` command. The app se
 Below are some quick start commands to run the application using the Docker image on Docker Hub.
 ```
 regex_pattern=".*Romeo.*Juliet.*"
-src_dir="./data" //contains shakespeare.txt
+src_dir="./data"    # contains shakespeare.txt
 outfile=grep_$(date +%F_%T).txt
 
 docker run --rm -v `pwd`/data:/data -v `pwd`/out:/out armathews/grep ${regex_pattern} ${src_dir} /out/${outfile}
 
-//matched lines will be recorded in outfile
+# matched lines will be recorded in outfile
 cat out/$outfile
 ```
 
@@ -22,14 +22,14 @@ The pseudocode outlining the process of finding and saving the matched lines to 
 ## Pseudocode
 ```
 matchedLines = []
-//list files recursively in specified directory
+# list files recursively in specified directory
 for file in listFiles(rootDir):
     for line in readLines(file):
-        //check if line contains pattern (given as cmd line argument)
+        # check if line contains pattern (given as cmd line argument)
         if containsPattern(line):
             matchedLines.add(Line)
             
-//write matched lines to output file
+# write matched lines to output file
 writeToFile(matchedLines)
 ```
 
