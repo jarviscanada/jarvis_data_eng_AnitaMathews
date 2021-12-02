@@ -20,7 +20,7 @@ skills:
   # At least 5 skills
   competent:
     - Java
-    - C++
+    - C
     - R
     - Docker
     - Machine Learning in Python
@@ -38,13 +38,13 @@ jarvis_projects:
     git_url: "/linux_sql"
     # The project description allows hiring managers to understand your project and technologies you used(e.g. programming languages, libraries, algorithms, hardware, tools, etc.).
     # The project description must start with an action verb (https://bit.ly/3guO98u)
-    description: "Provisioned a postgreSQL database using Docker on a Linux VM hosted on GCP. Wrote bash scripts to extract hardware specifications and resource usage data and insert data into database. Used crontab to record resource data every minute and confirmed results by performing SQL queries on the database. Used git during the development process and saved source code to GitHub."
+    description: "Provisioned a postgreSQL database using Docker on a Linux VM hosted on GCP. Programmed bash scripts to extract hardware specifications and resource usage data and insert data into database. Used crontab to record resource data every minute and tested results by performing SQL queries on the database. Used git during the development process and saved source code to GitHub."
   - name: "Core Java Apps"
     git_url: "/core_java"
     description:
-      - "Twitter App: Curabitur laoreet tristique leo, eget suscipit nisi. Sed in sodales ex. Maecenas vitae tincidunt dui, et eleifend quam."
-      - "JDBC App: Curabitur laoreet tristique leo, eget suscipit nisi. Sed in sodales ex. Maecenas vitae tincidunt dui, et eleifend quam."
-      - "Grep App: Curabitur laoreet tristique leo, eget suscipit nisi. Sed in sodales ex. Maecenas vitae tincidunt dui, et eleifend quam."
+      - "Grep App: Implemented an app in Java that mimics that Linux grep command. Wrote unit tests using JUnit and used the Stream API to optimize memory usage. Built a Docker Image and pushed image to Docker Hub where it can be pulled and run."
+      - "Twitter App: In progress."
+      - "JDBC App: In progress."
   - name: "Springboot App"
     git_url: "/springboot"
     description: ""
@@ -91,7 +91,7 @@ professional_experience:
   - title: "Undergraduate Research Assistant"
     company: "SNOLAB"
     duration: "September 2016-December 2016"
-    description: "Developed models to match testing data obtained from photo-multiplier tubes of DEAP-3600 dark matter detector. Developed simulations in C++ to estimate amount of interference between background signals and potential dark matter signals."
+    description: "Developed models to match testing data obtained from photo-multiplier tubes of DEAP-3600 dark matter detector. Developed simulations in C to estimate amount of interference between background signals and potential dark matter signals."
   - title: "Undergraduate Research Assistant"
     company: "Xerox Research Center of Canada"
     duration: "January 2015-April 2015"
