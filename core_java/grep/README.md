@@ -1,13 +1,24 @@
 # Introduction
-(50-100 words)
-Discuss the design of each app. What does the app do? What technologies have you used? (e.g. core java, libraries, lambda, IDE, docker, etc..)
+
+The purpose of this application is to mimic the Linux `grep` command. The app searches for a Regex pattern in a set of files in a given directory and writes any matching lines into a specified output text file. This is accomplished by first obtaining a list of files in the given directory, reading each line of each file and determining if a match is found. It was written using Java and also makes use of the `slf4j` and `JUnit` libraries for logging and unit tests, respectively. The Lambda and Stream APIs were also used in order to optimize memory usage. The app was packaged using Maven and saved to Docker Hub as a Docker Image where it can be pulled and run.
 
 # Quick Start
-How to use your apps? 
+Below are some quick start commands to run the application using the Docker image on Docker Hub.
+```
+regex_pattern=".*Romeo.*Juliet.*"
+src_dir="./data" //contains shakespeare.txt
+outfile=grep_$(date +%F_%T).txt
 
-#Implementation
+docker run --rm -v `pwd`/data:/data -v `pwd`/out:/out armathews/grep ${regex_pattern} ${src_dir} /out/${outfile}
+
+//matched lines will be recorded in outfile
+cat out/$outfile
+```
+
+# Implementation
 This project was implemented using Java where the application takes a Regex pattern, a directory and an outfile as command line arguments.
 The pseudocode outlining the process of finding and saving the matched lines to an output file can be seen in the next section.
+
 ## Pseudocode
 ```
 matchedLines = []
