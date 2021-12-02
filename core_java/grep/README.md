@@ -42,7 +42,118 @@ While Lists are stored entirely in memory, only the items being modified are in 
 This allows the application to process large amounts of data with a small heap memory.
 
 # Test
-How did you test your application manually? (e.g. prepare sample data, run some test cases manually, compare result)
+The application was tested by unit testing individual methods and comparing the final output of the application to the expected output. 
+
+## Unit Tests
+Several unit tests were performed by comparing the result to the expected output of that particular method. Examples can be seen below:
+
+```
+// Testing methods in JavaGrepImp
+
+    JavaGrepImp jgi = new JavaGrepImp();
+
+    @Test
+    public void readLinesTest() throws IOException {
+        List<String> lines = jgi.readLines(new File("./data/txt/shakespeare.txt"));
+        int FILESIZE = 124451; //expected value obtained from "wc -l shakespeare.txt"
+        assertTrue("Did not read all lines from file.", lines.size() == 124456);
+    }
+
+    @Test
+    public void containsPattern(){
+        jgi.setRegex("dog");
+        boolean match = jgi.containsPattern("There are cats, dogs and cows.");
+        assertTrue("Pattern should have been found", match);
+    }
+
+    @Test
+    public void writeFileTest() throws IOException {
+        jgi.setOutFile("./out/writetest.txt");
+        List<String> lines = new ArrayList<>();
+        lines.add("apple");
+        lines.add("box");
+        lines.add("car");
+        jgi.writeToFile(lines); //manual check to see if lines were written properly
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void readLinesExceptionTest() {
+        //file does not exist
+        jgi.readLines(new File("./data/txt/janeausten.txt"));
+    }
+    
+// Testing methods in JavaGrepLambdaImp (differs due to Stream return types in read/write/list files methods)
+    
+    JavaGrepLambdaImp jgLambda = new JavaGrepLambdaImp();
+    
+    @Test
+    public void readLinesTest() {
+        Stream<String> strStream = jgLambda.readLinesLambda(new File("./data/txt/shakespeare.txt"));
+        int FILESIZE = 124451; //from wc -l shakespeare.txt
+        assertTrue("Did not read all lines from file.", strStream.count() == 124456);
+    }
+
+    @Test
+    public void writeFileTest() throws IOException {
+        jgLambda.setOutFile("./out/writetestlambda.txt");
+        String[] lines = {"apple", "box", "car"};
+        Stream<String> strStream = Stream.of(lines);
+        jgLambda.writeToFileLambda(strStream); //manual check to see if lines writen correctly
+    }
+
+```
+All tests exited with exit code 0 indicating that the methods were performing as expected.
+
+## Testing Overall Output
+
+### Single File
+The expected output of the app is equivalent to that obtained using the `grep` command-line command. Using a test Regex pattern and the `shakespeare.txt` file, the expected output can be seen below:
+```
+> regex_pattern=".*Romeo.*Juliet.*"
+> src_dir="./data"
+> egrep -r ${regex_pattern} ${src_dir}
+
+# output
+    Is father, mother, Tybalt, Romeo, Juliet,
+Enter Romeo and Juliet aloft, at the Window.
+    And Romeo dead; and Juliet, dead before,
+    Romeo, there dead, was husband to that Juliet;
+```
+
+The output from the application using the same parameters is:
+```
+> java -cp target/grep-1.0-SNAPSHOT.jar ca.jrvs.apps.grep.JavaGrepImp .*Romeo.*Juliet.* ./data ./out/grep.txt
+> cat ./out/grep.txt
+
+# output
+    Is father, mother, Tybalt, Romeo, Juliet,
+Enter Romeo and Juliet aloft, at the Window.
+    And Romeo dead; and Juliet, dead before,
+    Romeo, there dead, was husband to that Juliet;
+```
+
+As seen, the output from the app matches the expected output.
+
+### Multiple Files
+The `shakespeare.txt` was duplicated in the same folder to test whether matching lines from multiple files were being recorded. The output for this test case can be seen below:
+
+```
+# data folder contains two copies of shakespeare.txt file
+java -cp target/grep-1.0-SNAPSHOT.jar ca.jrvs.apps.grep.JavaGrepImp .*Romeo.*Juliet.* ./data ./out/grep.txt
+cat ./out/grep.txt
+
+# output
+    Is father, mother, Tybalt, Romeo, Juliet,
+Enter Romeo and Juliet aloft, at the Window.
+    And Romeo dead; and Juliet, dead before,
+    Romeo, there dead, was husband to that Juliet;
+    Is father, mother, Tybalt, Romeo, Juliet,
+Enter Romeo and Juliet aloft, at the Window.
+    And Romeo dead; and Juliet, dead before,
+    Romeo, there dead, was husband to that Juliet;
+```
+
+The output matches the expected result.
 
 # Deployment
 This application was deployed by building a local Docker image and pushing it to Docker Hub.
