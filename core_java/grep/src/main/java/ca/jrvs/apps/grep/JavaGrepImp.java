@@ -1,7 +1,6 @@
 package ca.jrvs.apps.grep;
 
 import org.apache.log4j.BasicConfigurator;
-import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -10,8 +9,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
-import static org.junit.Assert.assertTrue;
 
 public class JavaGrepImp implements JavaGrep {
 
