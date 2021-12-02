@@ -6,7 +6,7 @@ My name is Anita Mathews and I graduated in November 2020 with my M.Sc. in Physi
 
 **Proficient:** Python, Linux/Bash, RDBMS/SQL, Git, Agile/Scrum
 
-**Competent:** Java, C++, R, Docker, Machine Learning in Python
+**Competent:** Java, C, R, Docker, Machine Learning in Python
 
 **Familiar:** HTML, CSS, Excel VBA, Google Analytics, Tableau
 
@@ -19,9 +19,9 @@ Project source code: [https://github.com/jarviscanada/jarvis_data_eng_AnitaMathe
 
 **Core Java Apps** [[GitHub](https://github.com/jarviscanada/jarvis_data_eng_AnitaMathews/tree/master/core_java)]:
       
-  - Twitter App: In process.
-  - JDBC App: In process.
-  - Grep App: In process.
+  - Grep App: Implemented an app in Java that mimics that Linux grep command. Wrote unit tests using JUnit and used the Stream API to optimize memory usage. Built a Docker Image and pushed image to Docker Hub where it can be pulled and run.
+  - Twitter App: In progress.
+  - JDBC App: In progress.
 
 **Springboot App** [[GitHub](https://github.com/jarviscanada/jarvis_data_eng_AnitaMathews/tree/master/springboot)]: Not Started
 
@@ -46,7 +46,7 @@ Project source code: [https://github.com/jarviscanada/jarvis_data_eng_AnitaMathe
 
 **M.Sc. Student, McMaster University (September 2018-November 2020)**: Developed method to incorporate observational gas data into a star cluster evolution simulation written in Python. Analyzed results in Python to find trends in the gas densities and clustering of the stars over time. Used Linux commands and bash scripts to edit files and submit jobs on high performance computing clusters. Helped instruct first year physics lab courses and explained concepts covered in lectures.
 
-**Undergraduate Research Assistant, SNOLAB (September 2016-December 2016)**: Developed models to match testing data obtained from photo-multiplier tubes of DEAP-3600 dark matter detector. Developed simulations in C++ to estimate amount of interference between background signals and potential dark matter signals.
+**Undergraduate Research Assistant, SNOLAB (September 2016-December 2016)**: Developed models to match testing data obtained from photo-multiplier tubes of DEAP-3600 dark matter detector. Developed simulations in C to estimate amount of interference between background signals and potential dark matter signals.
 
 **Undergraduate Research Assistant, Xerox Research Center of Canada (January 2015-April 2015)**: Collaborated with researchers and conducted experiments investigating print quality of 3D printed materials. Tested photo-sensitive material for printer drums. Recorded and analyzed experimental results using Excel VBA.
 
