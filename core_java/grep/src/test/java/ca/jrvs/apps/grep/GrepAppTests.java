@@ -20,8 +20,8 @@ public class GrepAppTests {
     @Test
     public void readLinesTest() throws IOException {
         List<String> lines = jgi.readLines(new File("./data/txt/shakespeare.txt"));
-        int FILESIZE = 124451; //from wc -l shakespeare.txt
-        assertTrue("Did not read all lines from file.", lines.size() == 124456);
+        int FILESIZE = 124456; //from wc -l shakespeare.txt
+        assertTrue("Did not read all lines from file.", lines.size() == FILESIZE);
     }
 
     @Test
