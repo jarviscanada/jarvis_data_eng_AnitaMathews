@@ -55,8 +55,8 @@ Several unit tests were performed by comparing the result to the expected output
     @Test
     public void readLinesTest() throws IOException {
         List<String> lines = jgi.readLines(new File("./data/txt/shakespeare.txt"));
-        int FILESIZE = 124451; //expected value obtained from "wc -l shakespeare.txt"
-        assertTrue("Did not read all lines from file.", lines.size() == 124456);
+        int FILESIZE = 124456; //expected value obtained from "wc -l shakespeare.txt"
+        assertTrue("Did not read all lines from file.", lines.size() == FILESIZE);
     }
 
     @Test
