@@ -23,7 +23,7 @@ public class JavaGrepLambdaImpTests {
     @Test
     public void readLinesTest() {
         Stream<String> strStream = jgLambda.readLinesLambda(new File("./data/txt/shakespeare.txt"));
-        int FILESIZE = 124451; //from wc -l shakespeare.txt
+        int FILESIZE = 124456; //from wc -l shakespeare.txt
         assertTrue("Did not read all lines from file.", strStream.count() == 124456);
     }
 
