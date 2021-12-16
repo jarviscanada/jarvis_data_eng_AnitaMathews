@@ -6,7 +6,7 @@ My name is Anita Mathews and I graduated in November 2020 with my M.Sc. in Physi
 
 **Proficient:** Python, Linux/Bash, RDBMS/SQL, Git, Agile/Scrum
 
-**Competent:** Java, C, R, Docker, Machine Learning in Python
+**Competent:** Java, C++, R, Docker, Machine Learning in Python
 
 **Familiar:** HTML, CSS, Excel VBA, Google Analytics, Tableau
 
@@ -21,17 +21,6 @@ Project source code: [https://github.com/jarviscanada/jarvis_data_eng_AnitaMathe
       
   - Grep App: Implemented an app in Java that mimics that Linux grep command. Wrote unit tests using JUnit and used the Stream API to optimize memory usage. Built a Docker Image and pushed image to Docker Hub where it can be pulled and run.
   - JDBC App: Implemented an app in Java that uses JDBC to execute queries on a database using the DAO pattern.
-  - Twitter App: In progress.
-
-**Springboot App** [[GitHub](https://github.com/jarviscanada/jarvis_data_eng_AnitaMathews/tree/master/springboot)]: Not Started
-
-**Python Data Analytics** [[GitHub](https://github.com/jarviscanada/jarvis_data_eng_AnitaMathews/tree/master/python_data_anlytics)]: Not Started
-
-**Hadoop** [[GitHub](https://github.com/jarviscanada/jarvis_data_eng_AnitaMathews/tree/master/hadoop)]: Not Started
-
-**Spark** [[GitHub](https://github.com/jarviscanada/jarvis_data_eng_AnitaMathews/tree/master/spark)]: Not Started
-
-**Cloud/DevOps** [[GitHub](https://github.com/jarviscanada/jarvis_data_eng_AnitaMathews/tree/master/cloud_devops)]: Not Started
 
 
 ## Highlighted Projects
@@ -42,11 +31,11 @@ Project source code: [https://github.com/jarviscanada/jarvis_data_eng_AnitaMathe
 
 ## Professional Experiences
 
-**Junior Software Developer, Jarvis (November 2021-present)**: Developed an MVP for a Linux Cluster Monitoring agent using Agile techniques, a virtual machine provisioned using Google Cloud Platform, bash scripts, git, Docker and postgreSQL. Participated in daily scrum meetings and weekly code reviews.
+**Junior Software Developer, Jarvis (November 2021-present)**: Developed an MVP for a Linux Cluster Monitoring agent using Agile techniques, a virtual machine provisioned using Google Cloud Platform, bash scripts, git, Docker and postgreSQL. Developed apps in Java to mimic Linux grep command and connect to postgreSQL database. Performed unit testing using the JUnit library. Participated in daily scrum meetings and weekly code reviews.
 
 **M.Sc. Student, McMaster University (September 2018-November 2020)**: Developed method to incorporate observational gas data into a star cluster evolution simulation written in Python. Analyzed results in Python to find trends in the gas densities and clustering of the stars over time. Used Linux commands and bash scripts to edit files and submit jobs on high performance computing clusters. Helped instruct first year physics lab courses and explained concepts covered in lectures.
 
-**Undergraduate Research Assistant, SNOLAB (September 2016-December 2016)**: Developed models to match testing data obtained from photo-multiplier tubes of DEAP-3600 dark matter detector. Developed simulations in C to estimate amount of interference between background signals and potential dark matter signals.
+**Undergraduate Research Assistant, SNOLAB (September 2016-December 2016)**: Developed models to match testing data obtained from photo-multiplier tubes of DEAP-3600 dark matter detector. Developed simulations in C++ to estimate amount of interference between background signals and potential dark matter signals.
 
 **Undergraduate Research Assistant, Xerox Research Center of Canada (January 2015-April 2015)**: Collaborated with researchers and conducted experiments investigating print quality of 3D printed materials. Tested photo-sensitive material for printer drums. Recorded and analyzed experimental results using Excel VBA.
 
