@@ -39,7 +39,7 @@
         "Grep App: Implemented an app in Java that mimics that Linux grep command. Wrote unit tests using JUnit and used the Stream API to optimize memory usage. Built a Docker Image and pushed image to Docker Hub where it can be pulled and run.",
         "JDBC App: Implemented an app in Java that uses JDBC to execute queries on a database using the DAO pattern."
       ],
-      "git_url": "/core_java",
+      "git_url": "https://github.com/jarviscanada/jarvis_data_eng_AnitaMathews/tree/develop/core_java",
       "name": "Core Java Apps"
     }
   ],
