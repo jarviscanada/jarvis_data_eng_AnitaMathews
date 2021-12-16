@@ -17,7 +17,7 @@ Project source code: [https://github.com/jarviscanada/jarvis_data_eng_AnitaMathe
 
 **Linux Cluster Monitoring Agent** [[GitHub](https://github.com/jarviscanada/jarvis_data_eng_AnitaMathews/tree/master/linux_sql)]: Provisioned a postgreSQL database using Docker on a Linux VM hosted on GCP. Programmed bash scripts to extract hardware specifications and resource usage data and insert data into database. Used crontab to record resource data every minute and tested results by performing SQL queries on the database. Used git during the development process and saved source code to GitHub.
 
-**Core Java Apps** [[GitHub](https://github.com/jarviscanada/jarvis_data_eng_AnitaMathews/tree/masterhttps://github.com/jarviscanada/jarvis_data_eng_AnitaMathews/tree/develop/core_java)]:
+**Core Java Apps** [[GitHub](https://github.com/jarviscanada/jarvis_data_eng_AnitaMathews/tree/develop/core_java)]:
       
   - Grep App: Implemented an app in Java that mimics that Linux grep command. Wrote unit tests using JUnit and used the Stream API to optimize memory usage. Built a Docker Image and pushed image to Docker Hub where it can be pulled and run.
   - JDBC App: Implemented an app in Java that uses JDBC to execute queries on a database using the DAO pattern.
