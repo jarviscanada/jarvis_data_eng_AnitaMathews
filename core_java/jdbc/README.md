@@ -32,8 +32,7 @@ The DAO design pattern revolves around hiding the implementation for accessing d
 ### Repository Pattern
 The Repository design pattern is similar the DAO pattern in that it hides the implementation details when querying the data. However, this design pattern is at a higher level than the DAO (closer to the business logic part of a larger application). This pattern can retrieve and store data from the database using multiple DAOs. In this way, information can be aggregated from various tables or data sources to form a more complete picture which is useful for driving business decisions.
 
-# Test
-How you test your app against the database? (e.g. database setup, test data set up, query result)
+# Tests
 
 ## Testing Database creation
 The database was created using the `database.sql` script. 
