@@ -16,7 +16,7 @@ public interface HttpHelper {
      * @param uri
      * @return
      */
-    HttpResponse httpPost(URI uri, String status);
+    HttpResponse httpPost(URI uri);
 
     /**
      * Execute a HTTP Get call

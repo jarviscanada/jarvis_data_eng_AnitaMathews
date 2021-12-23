@@ -29,10 +29,10 @@ public class TwitterHttpHelper implements HttpHelper {
     }
 
     @Override
-    public HttpResponse httpPost(URI uri, String status) {
+    public HttpResponse httpPost(URI uri) {
         try {
             HttpPost httpPostRequest = new HttpPost(uri);
-            httpPostRequest.setEntity(new StringEntity(status));
+            //httpPostRequest.setEntity(new StringEntity(status));
             consumer.sign(httpPostRequest);
             return httpClient.execute(httpPostRequest);
         } catch (OAuthException | IOException e) {
