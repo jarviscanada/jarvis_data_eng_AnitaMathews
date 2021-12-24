@@ -51,19 +51,8 @@ public class TwitterService implements Service {
     @Override
     public Tweet showTweet(String id, String[] fields) {
         validateTweetID(id);
-        Tweet fullTweet = (Tweet) dao.findById(id, fields);
-        if (fields == null) {
-            return fullTweet;
-        }
-        else {
-            System.out.println("fields are not null");
-            ObjectMapper m = new ObjectMapper();
-            SimpleFilterProvider filterProvider = new SimpleFilterProvider();
-            filterProvider.setFailOnUnknownId(false);
-            filterProvider.addFilter("tweetFields", SimpleBeanPropertyFilter.filterOutAllExcept(fields));
-            m.setFilterProvider(filterProvider);
-        }
-        return null;
+        Tweet tweet = (Tweet) dao.findById(id, fields);
+        return tweet;
     }
 
     @Override

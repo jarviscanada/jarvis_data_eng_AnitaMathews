@@ -9,6 +9,7 @@ import com.fasterxml.jackson.databind.ser.impl.SimpleBeanPropertyFilter;
 import com.fasterxml.jackson.databind.ser.impl.SimpleFilterProvider;
 
 import java.io.IOException;
+import java.util.Collections;
 
 public class JsonParsing {
     public static final String tweetStr = "{\n" +
@@ -71,7 +72,7 @@ public class JsonParsing {
         return (T) m.readValue(json, clazz);
     }
 
-    public static String toJson(Object object, boolean prettyJson, boolean includeNullValues) throws JsonProcessingException {
+    public static String toJson(Object object, boolean prettyJson, boolean includeNullValues, String[] fields) throws JsonProcessingException {
         ObjectMapper m = new ObjectMapper();
         if (!includeNullValues) {
             m.setSerializationInclusion(JsonInclude.Include.NON_NULL);
@@ -79,18 +80,23 @@ public class JsonParsing {
         if (prettyJson) {
             m.enable(SerializationFeature.INDENT_OUTPUT);
         }
-        System.out.println("fields are not null");
-        SimpleFilterProvider filterProvider = new SimpleFilterProvider();
-        filterProvider.addFilter("tweetFields", SimpleBeanPropertyFilter.filterOutAllExcept("id", "text"));
-        //m.setFilterProvider(filterProvider);
-        return m.writer(filterProvider).writeValueAsString(object);
 
-        //return m.writeValueAsString(object);
+        if (fields != null) {
+            SimpleFilterProvider filterProvider = new SimpleFilterProvider();
+            filterProvider.addFilter("tweetFields", SimpleBeanPropertyFilter.filterOutAllExcept(fields));
+            return m.writer(filterProvider).writeValueAsString(object);
+        }
+        else {
+            SimpleFilterProvider filterProviderFull = new SimpleFilterProvider();
+            filterProviderFull.addFilter("tweetFields", SimpleBeanPropertyFilter.serializeAllExcept((Collections.emptySet())));
+            return m.writer(filterProviderFull).writeValueAsString(object);
+        }
+
     }
 
     public static void main(String[] args) throws IOException {
         String[] fields = {"id", "text", "coordinates"};
         Tweet tweet = toObjectFromJson(tweetStr, Tweet.class);
-        System.out.println(toJson(tweet, true, false));
+        System.out.println(toJson(tweet, true, false, null));
     }
 }

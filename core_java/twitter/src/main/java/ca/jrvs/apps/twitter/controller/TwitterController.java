@@ -12,6 +12,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import org.apache.commons.lang.ArrayUtils;
 import org.apache.commons.lang.StringUtils;
 
+import javax.xml.crypto.dsig.spec.XSLTTransformParameterSpec;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -82,14 +83,17 @@ public class TwitterController implements Controller {
         HttpHelper httpHelper = new TwitterHttpHelper(CONSUMER_KEY, CONSUMER_SECRET, ACCESS_TOKEN, TOKEN_SECRET);
         TwitterDao twitterDao = new TwitterDao(httpHelper);
 
+        String[] fields = {"id", "text", "coordinates"};
         TwitterService twitterService = new TwitterService(twitterDao);
         TwitterController twitterController = new TwitterController(twitterService);
-        Tweet tweet = twitterController.buildTweet("Christmas time is the best time of the year", "43:79");
-        //Tweet tweet = twitterDao.findById("1474089618752643087");
+        //Tweet tweet = twitterController.buildTweet("Christmas time is the best time of the year", "43:79");
+        String[] fieldTest = {};
+        Tweet tweet = twitterDao.findById("1474260302854340608",null);
+        System.out.println(tweet.getCreated_at());
         //Tweet tweet = twitterDao.deleteById("1474089618752643087");
-        Tweet newTweet = twitterDao.create(tweet);
+        //Tweet newTweet = twitterDao.create(tweet); //this works
         //Tweet tweet = twitterDao.create(JsonParsing.toObjectFromJson(JsonParsing.tweetStr, Tweet.class));
-        System.out.println(JsonParsing.toJson(newTweet, true, true));
+        System.out.println(JsonParsing.toJson(tweet, true, false, null));
 
     }
 }

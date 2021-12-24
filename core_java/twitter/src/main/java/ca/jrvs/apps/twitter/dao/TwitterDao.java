@@ -66,13 +66,15 @@ public class TwitterDao implements CrdDao<Tweet, String>{
             HttpResponse response = httpHelper.httpGet(new URI(API_BASE_URI + SHOW_PATH + QUERY_SYM + "id=" + s));
             checkReturnCode(response);
             Tweet tweet = JsonParsing.toObjectFromJson(EntityUtils.toString(response.getEntity()), Tweet.class);
-            if (fields != null) {
+            if (fields == null) {
                 return tweet;
             }
             else {
-                String filteredTweetStr = JsonParsing.toJson(tweet, true, false)
+                System.out.println("trying to filter tweet");
+                String filteredTweetStr = JsonParsing.toJson(tweet, true, false, fields);
+                Tweet filteredTweet = JsonParsing.toObjectFromJson(filteredTweetStr, Tweet.class);
+                return filteredTweet;
             }
-            return tweet;
         } catch (URISyntaxException | IOException | OAuthException e) {
             throw new RuntimeException("Find by id error", e);
         }
@@ -101,6 +103,10 @@ public class TwitterDao implements CrdDao<Tweet, String>{
             }
             throw new RuntimeException("HTTP status error, code: " + returnCode);
         }
+    }
+
+    public static void main(String[] args) {
+
     }
 
 }
