@@ -1,9 +1,6 @@
 package ca.jrvs.apps.twitter.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.annotation.*;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
@@ -11,7 +8,7 @@ import org.apache.commons.lang.StringUtils;
 
 import java.io.IOException;
 import java.util.Arrays;
-
+@JsonFilter("tweetFields")
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonPropertyOrder({
         "created_at",
@@ -25,6 +22,7 @@ import java.util.Arrays;
         "favorited",
         "retweeted"
 })
+
 public class Tweet {
 
     @JsonProperty("created_at")

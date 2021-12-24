@@ -5,6 +5,8 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
+import com.fasterxml.jackson.databind.ser.impl.SimpleBeanPropertyFilter;
+import com.fasterxml.jackson.databind.ser.impl.SimpleFilterProvider;
 
 import java.io.IOException;
 
@@ -77,10 +79,17 @@ public class JsonParsing {
         if (prettyJson) {
             m.enable(SerializationFeature.INDENT_OUTPUT);
         }
-        return m.writeValueAsString(object);
+        System.out.println("fields are not null");
+        SimpleFilterProvider filterProvider = new SimpleFilterProvider();
+        filterProvider.addFilter("tweetFields", SimpleBeanPropertyFilter.filterOutAllExcept("id", "text"));
+        //m.setFilterProvider(filterProvider);
+        return m.writer(filterProvider).writeValueAsString(object);
+
+        //return m.writeValueAsString(object);
     }
 
     public static void main(String[] args) throws IOException {
+        String[] fields = {"id", "text", "coordinates"};
         Tweet tweet = toObjectFromJson(tweetStr, Tweet.class);
         System.out.println(toJson(tweet, true, false));
     }

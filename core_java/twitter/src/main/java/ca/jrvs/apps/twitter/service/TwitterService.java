@@ -2,6 +2,9 @@ package ca.jrvs.apps.twitter.service;
 
 import ca.jrvs.apps.twitter.dao.CrdDao;
 import ca.jrvs.apps.twitter.model.Tweet;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.ser.impl.SimpleBeanPropertyFilter;
+import com.fasterxml.jackson.databind.ser.impl.SimpleFilterProvider;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -48,7 +51,19 @@ public class TwitterService implements Service {
     @Override
     public Tweet showTweet(String id, String[] fields) {
         validateTweetID(id);
-        return (Tweet) dao.findById(id);
+        Tweet fullTweet = (Tweet) dao.findById(id, fields);
+        if (fields == null) {
+            return fullTweet;
+        }
+        else {
+            System.out.println("fields are not null");
+            ObjectMapper m = new ObjectMapper();
+            SimpleFilterProvider filterProvider = new SimpleFilterProvider();
+            filterProvider.setFailOnUnknownId(false);
+            filterProvider.addFilter("tweetFields", SimpleBeanPropertyFilter.filterOutAllExcept(fields));
+            m.setFilterProvider(filterProvider);
+        }
+        return null;
     }
 
     @Override

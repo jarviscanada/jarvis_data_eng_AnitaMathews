@@ -11,10 +11,11 @@ public interface CrdDao<T, ID> {
 
     /**
      * Find an entity(Tweet) by its id
-     * @param id entity id
+     *
+     * @param s
      * @return Tweet entity
      */
-    T findById(ID id);
+    T findById(String s, String[] fields);
 
     /**
      * Delete an entity(Tweet) by its ID

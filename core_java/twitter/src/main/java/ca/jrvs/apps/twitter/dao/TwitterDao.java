@@ -61,11 +61,17 @@ public class TwitterDao implements CrdDao<Tweet, String>{
     }
 
     @Override
-    public Tweet findById(String s) {
+    public Tweet findById(String s, String[] fields) {
         try {
             HttpResponse response = httpHelper.httpGet(new URI(API_BASE_URI + SHOW_PATH + QUERY_SYM + "id=" + s));
             checkReturnCode(response);
             Tweet tweet = JsonParsing.toObjectFromJson(EntityUtils.toString(response.getEntity()), Tweet.class);
+            if (fields != null) {
+                return tweet;
+            }
+            else {
+                String filteredTweetStr = JsonParsing.toJson(tweet, true, false)
+            }
             return tweet;
         } catch (URISyntaxException | IOException | OAuthException e) {
             throw new RuntimeException("Find by id error", e);
