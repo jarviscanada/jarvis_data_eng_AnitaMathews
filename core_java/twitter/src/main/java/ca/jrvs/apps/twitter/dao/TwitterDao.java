@@ -97,38 +97,4 @@ public class TwitterDao implements CrdDao<Tweet, String>{
         }
     }
 
-    public Tweet buildTweet(String text, String lat_lon) {
-        Tweet tweet = new Tweet();
-        tweet.setText(text);
-        Coordinates coords = new Coordinates();
-        double[] lat_lon_vals = Arrays.stream(StringUtils.split(lat_lon, ":")).mapToDouble(Double::parseDouble).toArray();
-        //System.out.println(Arrays.toString(lon_lat_vals));
-        //double[] lon_lat_vals = {79.0, 43.0};
-
-        //twitter stores (lon, lat) while input is given as (lat, lon)
-        ArrayUtils.reverse(lat_lon_vals);
-        coords.setCoordinates(lat_lon_vals);
-        //System.out.println(Arrays.toString(coords.getCoordinates()));
-        tweet.setCoordinates(coords);
-        //System.out.println(Arrays.toString(tweet.getCoordinates().getCoordinates()));
-        return tweet;
-    }
-
-    public static void main(String[] args) throws IOException {
-        String CONSUMER_KEY = System.getenv("consumerKey");
-        String CONSUMER_SECRET = System.getenv("consumerSecret");
-        String ACCESS_TOKEN = System.getenv("accessToken");
-        String TOKEN_SECRET = System.getenv("tokenSecret");
-
-        HttpHelper httpHelper = new TwitterHttpHelper(CONSUMER_KEY, CONSUMER_SECRET, ACCESS_TOKEN, TOKEN_SECRET);
-        TwitterDao twitterDao = new TwitterDao(httpHelper);
-
-        Tweet tweet = twitterDao.buildTweet("Christmas is almost here!", "43:79");
-        //Tweet tweet = twitterDao.findById("1474089618752643087");
-        //Tweet tweet = twitterDao.deleteById("1474089618752643087");
-        Tweet newTweet = twitterDao.create(tweet);
-        //Tweet tweet = twitterDao.create(JsonParsing.toObjectFromJson(JsonParsing.tweetStr, Tweet.class));
-        System.out.println(JsonParsing.toJson(newTweet, true, true));
-
-    }
 }

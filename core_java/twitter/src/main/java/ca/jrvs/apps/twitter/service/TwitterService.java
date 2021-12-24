@@ -25,7 +25,7 @@ public class TwitterService implements Service {
                 throw new RuntimeException("Tweet exceeds 140 character limit");
             }
 
-            if (lon < lon_low | lon > lon_hi | lat < lat_low | lat > lat_hi) {
+            if (lon < lon_low || lon > lon_hi || lat < lat_low || lat > lat_hi) {
                 throw new RuntimeException("Lat/Lon values out of range");
             }
 
