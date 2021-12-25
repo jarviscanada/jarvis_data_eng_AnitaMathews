@@ -8,6 +8,9 @@ import org.apache.commons.lang.StringUtils;
 
 import java.io.IOException;
 import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
+
 @JsonFilter("tweetFields")
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonPropertyOrder({
@@ -45,6 +48,21 @@ public class Tweet {
     private String favorited;
     @JsonProperty("retweeted")
     private String retweeted;
+
+    public static Set<String> getPropertyNames() {
+        Set<String> propertySet = new HashSet<>();
+        propertySet.add("created_at");
+        propertySet.add("id");
+        propertySet.add("id_str");
+        propertySet.add("text");
+        propertySet.add("entities");
+        propertySet.add("coordinates");
+        propertySet.add("retweet_count");
+        propertySet.add("favorite_count");
+        propertySet.add("favorited");
+        propertySet.add("retweeted");
+        return propertySet;
+    }
 
     public String getCreated_at() {
         return created_at;

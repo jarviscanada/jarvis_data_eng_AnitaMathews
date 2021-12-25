@@ -70,7 +70,6 @@ public class TwitterDao implements CrdDao<Tweet, String>{
                 return tweet;
             }
             else {
-                System.out.println("trying to filter tweet");
                 String filteredTweetStr = JsonParsing.toJson(tweet, true, false, fields);
                 Tweet filteredTweet = JsonParsing.toObjectFromJson(filteredTweetStr, Tweet.class);
                 return filteredTweet;
@@ -101,7 +100,7 @@ public class TwitterDao implements CrdDao<Tweet, String>{
             } catch (IOException e) {
                 throw new RuntimeException("Response has no entity", e);
             }
-            throw new RuntimeException("HTTP status error, code: " + returnCode);
+            throw new RuntimeException("HTTP status error, check tweet ID");
         }
     }
 
