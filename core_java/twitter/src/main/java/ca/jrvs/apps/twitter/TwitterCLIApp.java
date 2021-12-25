@@ -10,28 +10,48 @@ import ca.jrvs.apps.twitter.service.TwitterService;
 import ca.jrvs.apps.twitter.util.JsonParsing;
 import com.fasterxml.jackson.core.JsonProcessingException;
 
+import java.util.List;
+
 public class TwitterCLIApp {
 
     TwitterController controller;
 
     public TwitterCLIApp(TwitterController controller) {this.controller = controller;}
 
-    //print out tweet contents
+    public void printTweet(Tweet tweet) {
+        try {
+            System.out.println(JsonParsing.toJson(tweet, true, false, null));
+        } catch (JsonProcessingException e) {
+            throw new RuntimeException("Could not parse tweet to json string");
+        }
+    }
+
     public void run(String[] args) {
-        //check the args
         String operation = args[0];
+        Tweet tweet;
         switch (operation) {
             case "post":
                 if (args.length != 3) {
                     throw new IllegalArgumentException("To post tweet, 3 args required. Usage: post tweet_text lat:lon");
                 }
-                controller.postTweet(args);
+                tweet = controller.postTweet(args);
+                printTweet(tweet);
                 break;
             case "show":
                 if (args.length > 3 || args.length < 2) {
                     throw new IllegalArgumentException("To show tweet, 2-3 args required. Usage: show tweet_id [field1,field2]");
                 }
-                controller.showTweet(args);
+                tweet = controller.showTweet(args);
+                printTweet(tweet);
+                break;
+            case "delete":
+                if (args.length != 2) {
+                    throw new IllegalArgumentException("To delete tweet, 2 args required. Usage: delete [id1, id2]");
+                }
+                List<Tweet> tweets = controller.deleteTweet(args);
+                for (Tweet t : tweets) {
+                    printTweet(t);
+                }
                 break;
             default: throw new IllegalArgumentException("Commands are one of: post, show, delete");
         }

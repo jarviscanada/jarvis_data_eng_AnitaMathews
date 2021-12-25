@@ -81,18 +81,19 @@ public class TwitterDao implements CrdDao<Tweet, String>{
 
     @Override
     public Tweet deleteById(String s) {
+        Tweet tweet = findById(s, null);
         try {
             HttpResponse response = httpHelper.httpPost(new URI(API_BASE_URI + DELETE_PATH + "/" + s + ".json"));
             checkReturnCode(response);
-            Tweet tweet = JsonParsing.toObjectFromJson(EntityUtils.toString(response.getEntity()), Tweet.class);
-            return tweet;
-        } catch (URISyntaxException | IOException e) {
+        } catch (URISyntaxException e) {
             throw new RuntimeException("Deleting tweet by id error", e);
         }
+        return tweet;
     }
 
     private void checkReturnCode(HttpResponse response) {
         int returnCode = response.getStatusLine().getStatusCode();
+        //System.out.println(returnCode);
         if (returnCode != HTTP_OK) {
             try {
                 System.out.println("HTTP Response entity:");

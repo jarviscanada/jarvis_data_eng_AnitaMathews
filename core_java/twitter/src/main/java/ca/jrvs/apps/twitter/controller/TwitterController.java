@@ -21,6 +21,10 @@ import java.util.Set;
 import static ca.jrvs.apps.twitter.model.Tweet.getPropertyNames;
 
 public class TwitterController implements Controller {
+
+    private static final String COORD_SEP = ":";
+    private static final String COMMA = ",";
+
     private Service service;
 
     public TwitterController(Service service) {this.service = service;}
@@ -43,7 +47,7 @@ public class TwitterController implements Controller {
 
         //if fields specified, return only those
         else {
-            String[] fields = args[2].split(",");
+            String[] fields = args[2].split(COMMA);
             Set<String> properties = getPropertyNames();
             for (String s : fields) {
                 if (!properties.contains(s)) {
@@ -56,12 +60,12 @@ public class TwitterController implements Controller {
 
     @Override
     public List<Tweet> deleteTweet(String[] args) {
-        String[] tweet_ids = args[1].split(",");
+        String[] tweet_ids = args[1].split(COMMA);
         return service.deleteTweets(tweet_ids);
     }
 
     private Tweet buildTweet(String text, String lat_lon) {
-        String[] coords_lst = lat_lon.split(":");
+        String[] coords_lst = lat_lon.split(COORD_SEP);
         if (coords_lst.length != 2 || text.isEmpty() || text.trim().isEmpty()) {
             throw new IllegalArgumentException("Tweet text cannot be empty, 2 values for Lat/Lon are needed");
         }
