@@ -13,7 +13,6 @@ import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.util.EntityUtils;
-
 import java.io.IOException;
 import java.net.URI;
 
@@ -32,7 +31,6 @@ public class TwitterHttpHelper implements HttpHelper {
     public HttpResponse httpPost(URI uri) {
         try {
             HttpPost httpPostRequest = new HttpPost(uri);
-            //httpPostRequest.setEntity(new StringEntity(status));
             consumer.sign(httpPostRequest);
             return httpClient.execute(httpPostRequest);
         } catch (OAuthException | IOException e) {
