@@ -9,7 +9,7 @@ import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
 
-public class TwitterHttpHelperTest {
+public class TwitterHttpHelperUnitTest {
 
     HttpHelper httpHelper;
     private static String CONSUMER_KEY;
@@ -29,7 +29,7 @@ public class TwitterHttpHelperTest {
     @Test
     public void httpPost() {
         try {
-            HttpResponse response = httpHelper.httpPost(new URI("https://api.twitter.com/1.1/statuses/update.json?status=My_First_Tweet" + System.currentTimeMillis()));
+            HttpResponse response = httpHelper.httpPost(new URI("https://api.twitter.com/1.1/statuses/update.json?status=My_First_Tweet" ));
             System.out.println(EntityUtils.toString(response.getEntity()));
         } catch (URISyntaxException | IOException e) {
             throw new RuntimeException("httpPost method failed", e);

@@ -40,8 +40,6 @@ public class TwitterDao implements CrdDao<Tweet, String>{
 
     public TwitterDao(HttpHelper httpHelper) { this.httpHelper = httpHelper; }
 
-    //check the response status code
-    //int status = response.getStatusLine().getStatusCode();
     @Override
     public Tweet create(Tweet entity) {
         try {
@@ -53,8 +51,7 @@ public class TwitterDao implements CrdDao<Tweet, String>{
             HttpResponse response = httpHelper.httpPost(new URI(API_BASE_URI + POST_PATH + QUERY_SYM + "status="
                     + percentEscaper.escape(status) + AMPERSAND + "lat=" + lat + AMPERSAND + "long=" + lon));
             checkReturnCode(response);
-            Tweet tweet =  JsonParsing.toObjectFromJson(EntityUtils.toString(response.getEntity()), Tweet.class);
-            return tweet;
+            return parseTweet(EntityUtils.toString(response.getEntity()));
         } catch (URISyntaxException | IOException e) {
             throw new RuntimeException("Create tweet error", e);
         }
@@ -65,13 +62,13 @@ public class TwitterDao implements CrdDao<Tweet, String>{
         try {
             HttpResponse response = httpHelper.httpGet(new URI(API_BASE_URI + SHOW_PATH + QUERY_SYM + "id=" + s));
             checkReturnCode(response);
-            Tweet tweet = JsonParsing.toObjectFromJson(EntityUtils.toString(response.getEntity()), Tweet.class);
+            Tweet tweet = parseTweet(EntityUtils.toString(response.getEntity()));
             if (fields == null) {
                 return tweet;
             }
             else {
                 String filteredTweetStr = JsonParsing.toJson(tweet, true, false, fields);
-                Tweet filteredTweet = JsonParsing.toObjectFromJson(filteredTweetStr, Tweet.class);
+                Tweet filteredTweet = parseTweet(filteredTweetStr);
                 return filteredTweet;
             }
         } catch (URISyntaxException | IOException | OAuthException e) {
@@ -91,9 +88,12 @@ public class TwitterDao implements CrdDao<Tweet, String>{
         return tweet;
     }
 
-    private void checkReturnCode(HttpResponse response) {
+    public Tweet parseTweet(String tweetStr) throws IOException {
+        return JsonParsing.toObjectFromJson(tweetStr, Tweet.class);
+    }
+
+    public void checkReturnCode(HttpResponse response) {
         int returnCode = response.getStatusLine().getStatusCode();
-        //System.out.println(returnCode);
         if (returnCode != HTTP_OK) {
             try {
                 System.out.println("HTTP Response entity:");
@@ -104,9 +104,4 @@ public class TwitterDao implements CrdDao<Tweet, String>{
             throw new RuntimeException("HTTP status error, check tweet ID");
         }
     }
-
-    public static void main(String[] args) {
-
-    }
-
 }
