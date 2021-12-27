@@ -42,9 +42,10 @@ public class TwitterDaoUnitTest {
 
     public static String tweetStr = null;
     public static String existingTweetStr = null;
+    public TwitterDao spyDao;
 
     @Before
-    public void init() throws IOException {
+    public void init() throws IOException, OAuthException {
          tweetStr = "{\n" +
                 "   \"created_at\":\"Mon Feb 18 21:24:39 +0000 2019\",\n" +
                 "   \"id\":1097607853932564480,\n" +
@@ -118,16 +119,16 @@ public class TwitterDaoUnitTest {
                 "  \"favorited\" : \"false\",\n" +
                 "  \"retweeted\" : \"false\"\n" +
                 "}";
+        when(mockHelper.httpPost(isNotNull())).thenReturn(mockResponse);
+        when(mockHelper.httpGet(isNotNull())).thenReturn(mockResponse);
         when(mockResponse.getEntity()).thenReturn(entity);
+        spyDao =  Mockito.spy(dao);
+        Mockito.doNothing().when(spyDao).checkReturnCode(any());
     }
 
     @Test
     public void create() throws IOException {
-        when(mockHelper.httpPost(isNotNull())).thenReturn(mockResponse);
-
         Tweet expectedTweet = toObjectFromJson(tweetStr, Tweet.class);
-        TwitterDao spyDao =  Mockito.spy(dao);
-        Mockito.doNothing().when(spyDao).checkReturnCode(any());
         doReturn(expectedTweet).when(spyDao).parseTweet(any());
         Tweet newTweet = spyDao.create(expectedTweet);
 
@@ -138,31 +139,22 @@ public class TwitterDaoUnitTest {
 
     @Test
     public void findById() throws IOException, OAuthException {
-        when(mockHelper.httpGet(isNotNull())).thenReturn(mockResponse);
         Tweet expectedTweet = toObjectFromJson(existingTweetStr, Tweet.class);
         String id = expectedTweet.getId();
-
-        TwitterDao spyDao =  Mockito.spy(dao);
-        Mockito.doNothing().when(spyDao).checkReturnCode(any());
         doReturn(expectedTweet).when(spyDao).parseTweet(any());
-
         Tweet foundTweet = spyDao.findById(id, null);
+
         assertNotNull(foundTweet);
         assertEquals(foundTweet.getId(), id);
     }
 
     @Test
-    public void deleteById() throws IOException, OAuthException {
-        when(mockHelper.httpPost(isNotNull())).thenReturn(mockResponse);
-        when(mockHelper.httpGet(isNotNull())).thenReturn(mockResponse);
+    public void deleteById() throws IOException {
         Tweet expectedTweet = toObjectFromJson(existingTweetStr, Tweet.class);
         String id = expectedTweet.getId();
-
-        TwitterDao spyDao =  Mockito.spy(dao);
-        Mockito.doNothing().when(spyDao).checkReturnCode(any());
         doReturn(expectedTweet).when(spyDao).parseTweet(any());
-
         Tweet delTweet = spyDao.deleteById(id);
+
         assertNotNull(delTweet);
         assertEquals(expectedTweet, delTweet);
     }
