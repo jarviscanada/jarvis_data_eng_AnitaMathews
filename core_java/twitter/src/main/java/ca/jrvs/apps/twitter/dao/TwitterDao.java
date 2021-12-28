@@ -1,24 +1,15 @@
 package ca.jrvs.apps.twitter.dao;
 
 import ca.jrvs.apps.twitter.dao.helper.HttpHelper;
-import ca.jrvs.apps.twitter.dao.helper.TwitterHttpHelper;
-import ca.jrvs.apps.twitter.model.Coordinates;
 import ca.jrvs.apps.twitter.model.Tweet;
 import ca.jrvs.apps.twitter.util.JsonParsing;
 import com.google.common.net.PercentEscaper;
-import com.sun.org.apache.bcel.internal.generic.ANEWARRAY;
 import oauth.signpost.exception.OAuthException;
-import org.apache.commons.lang.ArrayUtils;
-import org.apache.commons.lang.StringUtils;
 import org.apache.http.HttpResponse;
 import org.apache.http.util.EntityUtils;
-
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
-import java.util.Arrays;
-
-import static ca.jrvs.apps.twitter.util.JsonParsing.toJson;
 
 public class TwitterDao implements CrdDao<Tweet, String>{
 

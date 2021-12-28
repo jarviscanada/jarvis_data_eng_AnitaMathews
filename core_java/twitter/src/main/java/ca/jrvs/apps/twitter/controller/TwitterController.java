@@ -17,12 +17,11 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Set;
-
+import ca.jrvs.apps.twitter.util.TweetUtil;
 import static ca.jrvs.apps.twitter.model.Tweet.getPropertyNames;
 
 public class TwitterController implements Controller {
 
-    private static final String COORD_SEP = ":";
     private static final String COMMA = ",";
 
     private Service service;
@@ -33,7 +32,7 @@ public class TwitterController implements Controller {
     public Tweet postTweet(String[] args) {
         String tweet_txt = args[1];
         String lat_lon = args[2];
-        Tweet tweet = buildTweet(tweet_txt, lat_lon);
+        Tweet tweet = TweetUtil.buildTweet(tweet_txt, lat_lon);
         return service.postTweet(tweet);
     }
 
@@ -64,30 +63,6 @@ public class TwitterController implements Controller {
         return service.deleteTweets(tweet_ids);
     }
 
-    private Tweet buildTweet(String text, String lat_lon) {
-        String[] coords_lst = lat_lon.split(COORD_SEP);
-        if (coords_lst.length != 2 || text.isEmpty() || text.trim().isEmpty()) {
-            throw new IllegalArgumentException("Tweet text cannot be empty, 2 values for Lat/Lon are needed");
-        }
-
-        //Build tweet if text is not empty and 2 coords are specified
-        Tweet tweet = new Tweet();
-        tweet.setText(text);
-        Coordinates coords = new Coordinates();
-        double[] lat_lon_vals = null;
-        try {
-            lat_lon_vals = Arrays.stream(StringUtils.split(lat_lon, ":")).mapToDouble(Double::parseDouble).toArray();
-
-        } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("Lat/Lon values are not numeric", e);
-        }
-
-        //twitter stores (lon, lat) while input is given as (lat, lon)
-        ArrayUtils.reverse(lat_lon_vals);
-        coords.setCoordinates(lat_lon_vals);
-        tweet.setCoordinates(coords);
-        return tweet;
-    }
 
     public static void main(String[] args) throws JsonProcessingException {
     /*
