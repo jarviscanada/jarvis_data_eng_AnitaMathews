@@ -11,7 +11,7 @@ public class TwitterService implements Service {
 
     public TwitterService(CrdDao dao) { this.dao = dao; }
 
-    private void validatePost(Tweet tweet) {
+    public void validatePost(Tweet tweet) {
             double lat_low = -90.0;
             double lat_hi = 90.0;
             double lon_low = -180.0;

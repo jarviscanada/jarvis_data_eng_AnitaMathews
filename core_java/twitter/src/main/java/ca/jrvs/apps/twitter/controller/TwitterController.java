@@ -1,20 +1,7 @@
 package ca.jrvs.apps.twitter.controller;
 
-import ca.jrvs.apps.twitter.dao.TwitterDao;
-import ca.jrvs.apps.twitter.dao.helper.HttpHelper;
-import ca.jrvs.apps.twitter.dao.helper.TwitterHttpHelper;
-import ca.jrvs.apps.twitter.model.Coordinates;
 import ca.jrvs.apps.twitter.model.Tweet;
 import ca.jrvs.apps.twitter.service.Service;
-import ca.jrvs.apps.twitter.service.TwitterService;
-import ca.jrvs.apps.twitter.util.JsonParsing;
-import com.fasterxml.jackson.core.JsonProcessingException;
-import org.apache.commons.lang.ArrayUtils;
-import org.apache.commons.lang.StringUtils;
-
-import javax.xml.crypto.dsig.spec.XSLTTransformParameterSpec;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Set;
 import ca.jrvs.apps.twitter.util.TweetUtil;
@@ -62,34 +49,4 @@ public class TwitterController implements Controller {
         String[] tweet_ids = args[1].split(COMMA);
         return service.deleteTweets(tweet_ids);
     }
-
-
-    public static void main(String[] args) throws JsonProcessingException {
-    /*
-        String CONSUMER_KEY = System.getenv("consumerKey");
-        String CONSUMER_SECRET = System.getenv("consumerSecret");
-        String ACCESS_TOKEN = System.getenv("accessToken");
-        String TOKEN_SECRET = System.getenv("tokenSecret");
-
-        HttpHelper httpHelper = new TwitterHttpHelper(CONSUMER_KEY, CONSUMER_SECRET, ACCESS_TOKEN, TOKEN_SECRET);
-        TwitterDao twitterDao = new TwitterDao(httpHelper);
-
-        String[] fields_args = {"show", "1474260302854340608", "id,coordinates"};
-        TwitterService twitterService = new TwitterService(twitterDao);
-        TwitterController twitterController = new TwitterController(twitterService);
-        //Tweet tweet = twitterController.buildTweet("Christmas time is the best time of the year", "43:79");
-        String[] fieldTest = {};
-        Tweet tweet = twitterController.showTweet(fields_args);
-        //Tweet tweet = twitterDao.findById("1474260302854340608",fields);
-        System.out.println(tweet.getCreated_at());
-        //Tweet tweet = twitterDao.deleteById("1474089618752643087");
-        //Tweet newTweet = twitterDao.create(tweet); //this works
-        //Tweet tweet = twitterDao.create(JsonParsing.toObjectFromJson(JsonParsing.tweetStr, Tweet.class));
-        System.out.println(JsonParsing.toJson(tweet, true, false, null));
-    */
-    }
-
-
-
-
 }
