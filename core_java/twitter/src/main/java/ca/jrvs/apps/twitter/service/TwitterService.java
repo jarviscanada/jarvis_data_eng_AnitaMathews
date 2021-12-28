@@ -2,10 +2,6 @@ package ca.jrvs.apps.twitter.service;
 
 import ca.jrvs.apps.twitter.dao.CrdDao;
 import ca.jrvs.apps.twitter.model.Tweet;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.ser.impl.SimpleBeanPropertyFilter;
-import com.fasterxml.jackson.databind.ser.impl.SimpleFilterProvider;
-
 import java.util.ArrayList;
 import java.util.List;
 
