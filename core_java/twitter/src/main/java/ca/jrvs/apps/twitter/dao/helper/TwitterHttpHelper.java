@@ -2,20 +2,20 @@ package ca.jrvs.apps.twitter.dao.helper;
 
 import oauth.signpost.OAuthConsumer;
 import oauth.signpost.commonshttp.CommonsHttpOAuthConsumer;
-import oauth.signpost.exception.OAuthCommunicationException;
 import oauth.signpost.exception.OAuthException;
-import oauth.signpost.exception.OAuthExpectationFailedException;
-import oauth.signpost.exception.OAuthMessageSignerException;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
-import org.apache.http.entity.StringEntity;
+import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.impl.client.HttpClientBuilder;
-import org.apache.http.util.EntityUtils;
+import org.apache.http.impl.client.HttpClients;
+import org.springframework.stereotype.Component;
+
 import java.io.IOException;
 import java.net.URI;
 
+@Component
 public class TwitterHttpHelper implements HttpHelper {
 
     private OAuthConsumer consumer;
@@ -25,6 +25,20 @@ public class TwitterHttpHelper implements HttpHelper {
         consumer = new CommonsHttpOAuthConsumer(consumerKey, consumerSecret);
         consumer.setTokenWithSecret(accessToken, tokenSecret);
         httpClient = HttpClientBuilder.create().build();
+    }
+
+    /**
+     * Default constructor
+     */
+
+    public TwitterHttpHelper() {
+        String consumerKey = System.getenv("consumerKey");
+        String consumerSecret = System.getenv("consumerSecret");
+        String accessToken = System.getenv("accessToken");
+        String tokenSecret = System.getenv("tokenSecret");
+        consumer = new CommonsHttpOAuthConsumer(consumerKey, consumerSecret);
+        consumer.setTokenWithSecret(accessToken, tokenSecret);
+        httpClient = HttpClients.createDefault();
     }
 
     @Override
@@ -43,8 +57,7 @@ public class TwitterHttpHelper implements HttpHelper {
         try {
             HttpGet httpGetRequest = new HttpGet(uri);
             consumer.sign(httpGetRequest);
-            HttpResponse httpResponse = httpClient.execute(httpGetRequest);
-            return httpResponse;
+            return httpClient.execute(httpGetRequest);
         } catch (OAuthException | IOException e) {
             throw new RuntimeException("Get request failed", e);
         }

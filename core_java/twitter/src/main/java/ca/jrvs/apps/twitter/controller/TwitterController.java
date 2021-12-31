@@ -5,14 +5,18 @@ import ca.jrvs.apps.twitter.service.Service;
 import java.util.List;
 import java.util.Set;
 import ca.jrvs.apps.twitter.util.TweetUtil;
+import org.springframework.beans.factory.annotation.Autowired;
+
 import static ca.jrvs.apps.twitter.model.Tweet.getPropertyNames;
 
+@org.springframework.stereotype.Controller
 public class TwitterController implements Controller {
 
     private static final String COMMA = ",";
 
     private Service service;
 
+    @Autowired
     public TwitterController(Service service) {this.service = service;}
 
     @Override

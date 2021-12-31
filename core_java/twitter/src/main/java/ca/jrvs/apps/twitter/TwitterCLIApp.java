@@ -1,6 +1,5 @@
 package ca.jrvs.apps.twitter;
 
-import ca.jrvs.apps.twitter.controller.Controller;
 import ca.jrvs.apps.twitter.controller.TwitterController;
 import ca.jrvs.apps.twitter.dao.TwitterDao;
 import ca.jrvs.apps.twitter.dao.helper.HttpHelper;
@@ -9,13 +8,17 @@ import ca.jrvs.apps.twitter.model.Tweet;
 import ca.jrvs.apps.twitter.service.TwitterService;
 import ca.jrvs.apps.twitter.util.JsonParsing;
 import com.fasterxml.jackson.core.JsonProcessingException;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 
+@Component
 public class TwitterCLIApp {
 
     TwitterController controller;
 
+    @Autowired
     public TwitterCLIApp(TwitterController controller) {this.controller = controller;}
 
     public void printTweet(Tweet tweet) {
@@ -57,7 +60,7 @@ public class TwitterCLIApp {
         }
     }
 
-    public static void main(String[] args) throws JsonProcessingException {
+    public static void main(String[] args) {
         String CONSUMER_KEY = System.getenv("consumerKey");
         String CONSUMER_SECRET = System.getenv("consumerSecret");
         String ACCESS_TOKEN = System.getenv("accessToken");
@@ -70,15 +73,5 @@ public class TwitterCLIApp {
         TwitterCLIApp twitterCLIApp = new TwitterCLIApp(twitterController);
 
         twitterCLIApp.run(args);
-     //   String[] fields = {"id", "text", "coordinates"};
-
-        //Tweet tweet = twitterController.buildTweet("Christmas time is the best time of the year", "43:79");
-        //String[] fieldTest = {};
-        //Tweet tweet = twitterDao.findById("1474260302854340608",null);
-        //System.out.println(tweet.getCreated_at());
-        //Tweet tweet = twitterDao.deleteById("1474089618752643087");
-        //Tweet newTweet = twitterDao.create(tweet); //this works
-        //Tweet tweet = twitterDao.create(JsonParsing.toObjectFromJson(JsonParsing.tweetStr, Tweet.class));
-        //System.out.println(JsonParsing.toJson(tweet, true, false, null));
     }
 }
