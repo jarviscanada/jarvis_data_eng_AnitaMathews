@@ -55,7 +55,6 @@ public class TwitterServiceUnitTest {
     @Test
     public void deleteTweets() {
         String[] tweetIDs = {"123", "345"};
-        when(dao.deleteById(anyCollection().toArray())).thenReturn(tweetIDs);
         service.deleteTweets(tweetIDs);
     }
 }

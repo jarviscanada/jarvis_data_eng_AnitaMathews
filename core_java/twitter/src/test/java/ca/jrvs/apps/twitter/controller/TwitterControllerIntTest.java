@@ -35,23 +35,28 @@ public class TwitterControllerIntTest {
 
     @Test
     public void postTweet() {
-        String tweet_text = "post tweet testing text " + System.currentTimeMillis();
+        String tweet_text = "post tweet controller testing text " + System.currentTimeMillis();
         String lat_lon = "45:56";
-        Tweet tweet = TweetUtil.buildTweet(tweet_text, lat_lon);
         String[] args = {"post", tweet_text, lat_lon};
         controller.postTweet(args);
     }
 
     @Test
     public void showTweet() throws JsonProcessingException {
+        String tweet_text = "show tweet controller testing text " + System.currentTimeMillis();
+        String lat_lon = "45:56";
+        String[] post_args = {"post", tweet_text, lat_lon};
+        Tweet tweet = controller.postTweet(post_args);
+        String id = tweet.getId();
+
         //show all tweet attributes
-        String[] args = {"show", "1474260302854340608"};
-        Tweet tweet = controller.showTweet(args);
+        String[] args = {"show", id};
+        Tweet foundTweet = controller.showTweet(args);
         System.out.println("full tweet:");
-        System.out.println(JsonParsing.toJson(tweet, true, false, null));
+        System.out.println(JsonParsing.toJson(foundTweet, true, false, null));
 
         //show only id and coords
-        String[] field_args = {"show", "1474260302854340608", "id,coordinates"};
+        String[] field_args = {"show", id, "id,coordinates"};
         Tweet tweetFields = controller.showTweet(field_args);
         System.out.println("only id and coords fields");
         System.out.println(JsonParsing.toJson(tweetFields, true, false, null));

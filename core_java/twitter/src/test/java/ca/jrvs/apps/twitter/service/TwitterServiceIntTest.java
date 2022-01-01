@@ -30,12 +30,12 @@ public class TwitterServiceIntTest {
 
     @Test
     public void postTweet() {
-        service.postTweet(TweetUtil.buildTweet("post tweet test text", "56:78"));
+        service.postTweet(TweetUtil.buildTweet("post tweet test text " + System.currentTimeMillis(), "56:78"));
     }
 
     @Test
     public void showTweet() throws JsonProcessingException {
-        Tweet tweet = service.postTweet(TweetUtil.buildTweet("show tweet test text", "56:78"));
+        Tweet tweet = service.postTweet(TweetUtil.buildTweet("show tweet test text " + System.currentTimeMillis(), "56:78"));
 
         //show all fields
         Tweet foundTweet = service.showTweet(tweet.getId(), null);
