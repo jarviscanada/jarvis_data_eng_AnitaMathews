@@ -7,25 +7,35 @@ import ca.jrvs.apps.twitter.util.JsonParsing;
 import ca.jrvs.apps.twitter.util.TweetUtil;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
 public class TwitterDaoIntTest {
 
+    //authentication
+    private static String CONSUMER_KEY;
+    private static String CONSUMER_SECRET;
+    private static String ACCESS_TOKEN;
+    private static String TOKEN_SECRET;
+
+    //Dao and tweet properties to check
     private TwitterDao dao;
     private String hashTag;
     private String text;
     private String lat_lon;
     private Tweet tweet;
 
+    @BeforeClass
+    public static void init() {
+        CONSUMER_KEY = System.getenv("consumerKey");
+        CONSUMER_SECRET = System.getenv("consumerSecret");
+        ACCESS_TOKEN = System.getenv("accessToken");
+        TOKEN_SECRET = System.getenv("tokenSecret");
+    }
 
     @Before
-    public void init() {
-        String CONSUMER_KEY = System.getenv("consumerKey");
-        String CONSUMER_SECRET = System.getenv("consumerSecret");
-        String ACCESS_TOKEN = System.getenv("accessToken");
-        String TOKEN_SECRET = System.getenv("tokenSecret");
-
+    public void setUpTweet() {
         HttpHelper httpHelper = new TwitterHttpHelper(CONSUMER_KEY, CONSUMER_SECRET, ACCESS_TOKEN, TOKEN_SECRET);
         this.dao = new TwitterDao(httpHelper);
 
@@ -35,7 +45,6 @@ public class TwitterDaoIntTest {
         lat_lon = "45:63";
         Tweet newTweet = TweetUtil.buildTweet(text, lat_lon);
         tweet = dao.create(newTweet);
-
     }
 
     @Test
@@ -83,6 +92,5 @@ public class TwitterDaoIntTest {
         //check to ensure that it is deleted by trying to find it again
         //should throw Runtime exception
         Tweet foundDelTweet = dao.findById(id, null);
-
     }
 }
