@@ -39,12 +39,5 @@ public class JsonParsing {
         }
 
     }
-/*
-    public static void main(String[] args) throws IOException {
-        String[] fields = {"id", "text", "coordinates"};
-        Tweet tweet = toObjectFromJson(tweetStr, Tweet.class);
-        System.out.println(toJson(tweet, true, false, null));
-    }
 
- */
 }
