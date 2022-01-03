@@ -20,6 +20,7 @@ public class TwitterCLISpringBoot implements CommandLineRunner {
 
         //Turn off web
         app.setWebApplicationType(WebApplicationType.NONE);
+        app.run(args);
     }
 
     @Override

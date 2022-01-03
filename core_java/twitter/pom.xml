@@ -78,7 +78,7 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
-                    <mainClass>ca.jrvs.apps.twitter.TwitterCLIApp</mainClass>
+                    <mainClass>ca.jrvs.apps.twitter.spring.TwitterCLISpringBoot</mainClass>
                 </configuration>
             </plugin>
         </plugins>
