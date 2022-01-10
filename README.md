@@ -21,6 +21,7 @@ Project source code: [https://github.com/jarviscanada/jarvis_data_eng_AnitaMathe
       
   - Grep App: Implemented an app in Java that mimics that Linux grep command. Wrote unit tests using JUnit and used the Stream API to optimize memory usage. Built a Docker Image and pushed image to Docker Hub where it can be pulled and run.
   - JDBC App: Implemented an app in Java that uses JDBC to execute queries on a database using the DAO pattern.
+  - Twitter App: Implemented an app in Java that can create, read and delete Tweets from the CLI using the Twitter REST API. Developed the app using several layers including a controller layer, service layer and a data access object layer. Performed unit and integration testing using JUnit and Mockito and packaged app using Maven. Built a Docker image and pushed to Docker Hub.
 
 
 ## Highlighted Projects
@@ -31,7 +32,7 @@ Project source code: [https://github.com/jarviscanada/jarvis_data_eng_AnitaMathe
 
 ## Professional Experiences
 
-**Junior Software Developer, Jarvis (November 2021-present)**: Developed an MVP for a Linux Cluster Monitoring agent using Agile techniques, a virtual machine provisioned using Google Cloud Platform, bash scripts, git, Docker and postgreSQL. Developed apps in Java to mimic Linux grep command and connect to postgreSQL database. Performed unit testing using the JUnit library. Participated in daily scrum meetings and weekly code reviews.
+**Junior Software Developer, Jarvis (November 2021-present)**: Developed an MVP for a Linux Cluster Monitoring agent using Agile techniques, a virtual machine provisioned using Google Cloud Platform, bash scripts, git, Docker and postgreSQL. Developed apps in Java to mimic Linux grep command, connect to postgreSQL database and perform operations on Tweets using the Twitter API. Performed unit and integration testing using the JUnit and Mockito libraries. Participated in daily scrum meetings and weekly code reviews.
 
 **M.Sc. Student, McMaster University (September 2018-November 2020)**: Developed method to incorporate observational gas data into a star cluster evolution simulation written in Python. Analyzed results in Python to find trends in the gas densities and clustering of the stars over time. Used Linux commands and bash scripts to edit files and submit jobs on high performance computing clusters. Helped instruct first year physics lab courses and explained concepts covered in lectures.
 
