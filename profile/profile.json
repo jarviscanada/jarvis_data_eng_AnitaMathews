@@ -40,7 +40,7 @@
         "JDBC App: Implemented an app in Java that uses JDBC to execute queries on a database using the DAO pattern.",
         "Twitter App: Implemented an app in Java that can create, read and delete Tweets from the CLI using the Twitter REST API. Developed the app using several layers including a controller layer, service layer and a data access object layer. Performed unit and integration testing using JUnit and Mockito and packaged app using Maven. Built a Docker image and pushed to Docker Hub."
       ],
-      "git_url": "https://github.com/jarviscanada/jarvis_data_eng_AnitaMathews/tree/develop/core_java",
+      "git_url": "/core_java",
       "name": "Core Java Apps"
     }
   ],
